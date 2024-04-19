@@ -77,10 +77,12 @@ header.active {
 	font-weight: 500;
 	color: #f5f3df;
 }
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 1500px) {
 	.start header .header_inner { 
 		padding: 0 25px;
 	}
+}
+@media only screen and (max-width: 940px) {
 	.start header .header_inner .title h1 {
 		font-size: 2.5em;
 	}
@@ -123,31 +125,31 @@ position: relative;
 #desktop ul li:hover a {
 	color: #f5f3df;
 }
-.start header.fixed .header_inner #desktop ul li:hover::after {
+#desktop > ul > li> a::after {
 	content: "";
 	position: absolute;
-	left: 0;
+	left: 50%;
 	bottom: 0;
-	width: 100%;
+	width: 0;
 	height: 2px;
-	background-color:#440c01; 
+	background-color: #f5f3df;
+	transform: translateX(-50%);
+	transition: width 0.3s ease;
 }
-#desktop ul li:hover::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: 0;
+#desktop > ul > li:hover a::after {
 	width: 100%;
-	height: 2px;
-	background-color:#f5f3df; 
-}
+} 
+#desktop > ul > li.fixed > a::after,
+#desktop > ul > li.active > a::after{
+	transform: translateX(-50%) scale(1);
+} 
 #mobile {
 	display: none;
 	position: fixed;
 	right: 0;
 	top: 0;
 	z-index: 10000;
-	width: 350px;
+	width: 280px;
 	height: 100vh;
 	background: url(../images/body-bg.png)repeat;
 }
@@ -171,15 +173,6 @@ position: relative;
 	line-height: 60px;
 	font-size: 1em;
 	color: #440c01;
-}
-#mobile ul li:hover::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 2px;
-	background-color:#440c01; 
 }
 #tab {
 	position: fixed;
@@ -207,7 +200,7 @@ position: relative;
 	background-size: contain;
 }
 
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 1400px) {
 	#desktop {
 		display: none;
 	}
@@ -215,7 +208,7 @@ position: relative;
 		display: block;
 	}
 	#tab.close {
-		right: 360px; 
+		right: 290px; 
 		transition: left 0.3s ease; 
 	}
 }
@@ -237,16 +230,32 @@ position: relative;
 	color: #f5f3df;
 }
 .start .slider .keytext p{
-	margin-top: 10px;
+	margin-top: 5px;
 	font-size:  1vw; 
 	margin-bottom: 20px;
 	white-space: nowrap; 
 	color: #f5f3df;
+	transition: 0.3s;
 }
-.start .slider .keytext a.btn{
-	display: inline-block;
-	color:#f5f3df;
-	font-size:  0.9375em;
+.start .slider .keytext a.btn {
+    display: inline-block;
+    padding: 5px;
+    color: #f5f3df;
+    font-size: 0.9375em;
+    position: relative;
+}
+.start .slider .keytext a.btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px; /* 초기 높이를 0으로 설정하여 밑줄이 보이지 않도록 함 */
+    background-color: transparent;
+    transition: 0.3s; /* height 속성에만 transition 적용 */
+}
+.start .slider .keytext a.btn:hover::after {
+	background-color: #f5f3df;
 }
 @media only screen and (max-width: 720px) {
 	
@@ -277,6 +286,24 @@ section .title p {
 	margin: 0 auto;
 	max-width: 1440px;
 
+}
+#section1 .inner .title p {
+	display: inline-block;
+	position: relative;
+	padding: 4px;
+}
+#section1 .inner .title p::after {
+	content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px; 
+    background-color: transparent;
+    transition: 0.3s; 
+}
+#section1 .inner .title p:hover::after {
+	background-color: #78787a;
 }
 #section1 .visual {
 	margin-top: 70px; 
@@ -397,9 +424,27 @@ section .title p {
 	margin-bottom: 20px;
 	white-space: nowrap; 
 }
-#section2 .keytext a.btn{
+#section2 .keytext a.btn {
 	color:#fff;
 	font-size:  0.9375em;
+	display: inline-block;
+    padding: 5px;
+    color: #f5f3df;
+    font-size: 0.9375em;
+    position: relative;
+}
+#section2 .keytext a.btn::after {
+	content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px; 
+    background-color: transparent;
+    transition: 0.3s; 
+}
+#section2 .keytext a.btn:hover::after {
+	background-color: #f5f3df;
 }
 @media only screen and (max-width: 940px) {
 	#section2 .inner {
@@ -754,10 +799,28 @@ section .title p {
 	margin-bottom: 20px;
 	white-space: nowrap; 
 }
-#section6 .keytext a.btn{
+#section6 .keytext a.btn {
 	margin-top: 30px;
 	font-size:  0.9375em;
 	color: 	#e8dcc7;
+	display: inline-block;
+    padding: 5px;
+    color: #f5f3df;
+    font-size: 0.9375em;
+    position: relative;
+}
+#section6 .keytext a.btn::after {
+	content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px; /* 초기 높이를 0으로 설정하여 밑줄이 보이지 않도록 함 */
+    background-color: transparent;
+    transition: 0.3s; /* height 속성에만 transition 적용 */
+}
+#section6 .keytext a.btn:hover::after {
+	background-color: #f5f3df;
 }
 @media only screen and (max-width:1440px){
 	#section6 .keytext h3{

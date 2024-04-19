@@ -6,26 +6,19 @@ window.addEventListener("DOMContentLoaded", function(){
 
 	let desktop=document.getElementById("desktop");
 	let desktopList=desktop.firstElementChild.children;
-
 	let mobile=document.getElementById("mobile");
 	let mobileList=mobile.firstElementChild.children;
-
 	let header=document.querySelector("header");
 	let tab=document.getElementById("tab");
 	let dim=document.querySelector(".dim");
-
 	let start=document.querySelector(".start");
 	let section=this.document.querySelectorAll("section");
 	let pageList=[];
-
 	// pageList[0]=start;
-
 	for(let i=0; i < section.length; i++){
 		pageList.push(section[i]);
 	}
-	console.log(pageList);
     let mainvideo=document.getElementById("main_video");
-    mainvideo.muted=true;
     mainvideo.addEventListener("loadeddata", function(){
         mainvideo.play(); 
     });
@@ -33,12 +26,11 @@ window.addEventListener("DOMContentLoaded", function(){
         mainvideo.play(); 
     });
 	let subvideo=document.getElementById("sub_video");
-    subvideo.muted=true;
     subvideo.addEventListener("loadeddata", function(){
         subvideo.play();
     });
     subvideo.addEventListener("ended", function(){
-        sub_video.play();  
+        subvideo.play();  
     });
 	this.window.addEventListener("scroll",function(){ 
 			wint = document.documentElement.scrollTop; 
@@ -106,19 +98,18 @@ window.addEventListener("DOMContentLoaded", function(){
 				mobile.classList.remove("active");
 			});
 		}
-$(function(){
-	var swiper=new Swiper(".mySwiper", {
-		direction: 'vertical', 
-		loop:true,
-		slidesPerView: 2,
-		spaceBetween: 35,
-		mousewheel: true,
-		breakpoints: {
-			720: {
-				slidesPerView: 3
+		var swiper=new Swiper(".mySwiper", {
+			direction: 'vertical', 
+			loop:true,
+			slidesPerView: 2,
+			spaceBetween: 35,
+			mousewheel: true,
+			breakpoints: {
+				720: {
+					slidesPerView: 3
+				}
 			}
-		}
-	});
+		});
 	tab.addEventListener("click",function(e){
 		e.preventDefault();
 		if(tab.classList.contains("open")){
@@ -137,20 +128,16 @@ $(function(){
 		}
 	});
 	let winw;
-	$(window).resize(function(){
-		winw=$(window).width(); 
-		if(winw > 720) { 
-			if($("#tab").hasClass("close")===true){ 
-				$("body").removeClass("fixed"); 
-				$("#mobile").removeClass("active"); 
-				$("#tab").removeAttr("class"); 
-				$("#tab").addClass("open"); 
-				$(".dim").removeClass("active");
+	window.addEventListener('resize', function() {
+		winw = window.innerWidth; 
+		if (winw > 720) {
+			if (document.getElementById("tab").classList.contains("close")) {
+				document.body.classList.remove("fixed");
+				document.getElementById("mobile").classList.remove("active");
+				document.getElementById("tab").removeAttribute("class");
+				document.getElementById("tab").classList.add("open");
+				document.querySelector(".dim").classList.remove("active");
 			}
 		}
 	});
-	
-
-});
-
-});
+	});
